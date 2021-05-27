@@ -1,0 +1,13 @@
+L(1) = Link([0 0 1 0]);
+L(2) = Link([0 0 1 0]);
+L(3) = Link([0 0 1 0]);
+ThreeLink = SerialLink(L);
+ThreeLink.name = 'Planar3R';
+%ThreeLink.plot([pi/4 pi/4 pi/4]);
+ThreeLink.fkine([pi/4 pi/4 pi/4]);
+TL = [-1 0 0 0 ; 0 -1 0 1; 0 0 1 0; 0 0 0 1];
+Q0 = [0 -pi/2 pi/2];
+QF = ThreeLink.ikine(TL, Q0,'mask', [1 1 0 0 0 1]);
+ThreeLink.plot(QF);
+TRAJ = jtraj(Q0, QF, (0:.05:1));
+ThreeLink.plot(TRAJ);
