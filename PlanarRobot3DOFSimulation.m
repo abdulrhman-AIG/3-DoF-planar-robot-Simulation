@@ -11,14 +11,9 @@ ThreeLink.name = 'Planar3R';
 ThreeLink.base=[10 10 0];
 t=(0:0.05:2)';
 a = xlsread('GGGLetter.xlsx');
-
-
-
-masd=mstraj(a,[1,2,0],[],a(1,:),0.05,0)
-TRAJ1=ThreeLink.fkine(masd);
-yyt=transl(masd);
+masd=mstraj(a,[4,4,0],[],a(1,:),0.1,0)
+%TRAJ1=ThreeLink.fkine(masd);
 q1=ThreeLink.ikine(transl(masd),[0 0 0],'mask',[1 1 0 0 0 1]);
-
 scatter(a(:,1),a(:,2),'filled','bo');
 ThreeLink.plot(q1,'loop','workspace',[-20 20 -20 20 -20 20])
 
